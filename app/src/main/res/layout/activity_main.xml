@@ -18,7 +18,6 @@
     <com.yt8492.numerickeyboard.NumericKeyboard
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@drawable/keyboard_divider"
             app:targetField="@id/target"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

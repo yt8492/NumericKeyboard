@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@drawable/keyboard_divider"
-        android:showDividers="beginning|middle">
+        xmlns:android="http://schemas.android.com/apk/res/android">
     <TableRow style="@style/KeyboardRow">
         <TextView
                 style="@style/KeyboardButton"

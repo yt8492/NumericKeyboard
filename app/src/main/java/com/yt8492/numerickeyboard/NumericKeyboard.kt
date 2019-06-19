@@ -3,7 +3,6 @@ package com.yt8492.numerickeyboard
 import android.content.Context
 import android.util.AttributeSet
 import android.util.SparseArray
-import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
@@ -37,7 +36,7 @@ class NumericKeyboard @JvmOverloads constructor(
         context.obtainStyledAttributes(attrs, R.styleable.NumericKeyboard).also { typedArray ->
             targetFieldId = typedArray.getResourceIdOrThrow(R.styleable.NumericKeyboard_targetField)
         }.recycle()
-        LayoutInflater.from(context).inflate(R.layout.numeric_keyboard, this, true).apply {
+        View.inflate(context, R.layout.numeric_keyboard, this).apply {
             numeric_key_0.setOnClickListener(this@NumericKeyboard)
             numeric_key_1.setOnClickListener(this@NumericKeyboard)
             numeric_key_2.setOnClickListener(this@NumericKeyboard)
@@ -52,7 +51,7 @@ class NumericKeyboard @JvmOverloads constructor(
         }
         dividerDrawable = context.getDrawable(R.drawable.keyboard_divider)
         showDividers = SHOW_DIVIDER_BEGINNING or LinearLayout.SHOW_DIVIDER_MIDDLE
-        children.mapNotNull { it as? TableRow }
+        children.filterIsInstance<TableRow>()
             .forEach { it.dividerDrawable = dividerDrawable }
     }
 
