@@ -19,16 +19,16 @@ class NumericKeyboard @JvmOverloads constructor(
     attrs: AttributeSet? = null
 ) : TableLayout(context, attrs), View.OnClickListener {
     private val keyValues = SparseArray<String>().apply {
-        put(R.id.numeric_key_0, "0")
-        put(R.id.numeric_key_1, "1")
-        put(R.id.numeric_key_2, "2")
-        put(R.id.numeric_key_3, "3")
-        put(R.id.numeric_key_4, "4")
-        put(R.id.numeric_key_5, "5")
-        put(R.id.numeric_key_6, "6")
-        put(R.id.numeric_key_7, "7")
-        put(R.id.numeric_key_8, "8")
-        put(R.id.numeric_key_9, "9")
+        put(R.id.numericKey0, "0")
+        put(R.id.numericKey1, "1")
+        put(R.id.numericKey2, "2")
+        put(R.id.numericKey3, "3")
+        put(R.id.numericKey4, "4")
+        put(R.id.numericKey5, "5")
+        put(R.id.numericKey6, "6")
+        put(R.id.numericKey7, "7")
+        put(R.id.numericKey8, "8")
+        put(R.id.numericKey9, "9")
     }
     private val targetFieldId: Int
     private lateinit var inputConnection: InputConnection
@@ -37,16 +37,16 @@ class NumericKeyboard @JvmOverloads constructor(
             targetFieldId = typedArray.getResourceIdOrThrow(R.styleable.NumericKeyboard_targetField)
         }.recycle()
         View.inflate(context, R.layout.numeric_keyboard, this).apply {
-            numeric_key_0.setOnClickListener(this@NumericKeyboard)
-            numeric_key_1.setOnClickListener(this@NumericKeyboard)
-            numeric_key_2.setOnClickListener(this@NumericKeyboard)
-            numeric_key_3.setOnClickListener(this@NumericKeyboard)
-            numeric_key_4.setOnClickListener(this@NumericKeyboard)
-            numeric_key_5.setOnClickListener(this@NumericKeyboard)
-            numeric_key_6.setOnClickListener(this@NumericKeyboard)
-            numeric_key_7.setOnClickListener(this@NumericKeyboard)
-            numeric_key_8.setOnClickListener(this@NumericKeyboard)
-            numeric_key_9.setOnClickListener(this@NumericKeyboard)
+            numericKey0.setOnClickListener(this@NumericKeyboard)
+            numericKey1.setOnClickListener(this@NumericKeyboard)
+            numericKey2.setOnClickListener(this@NumericKeyboard)
+            numericKey3.setOnClickListener(this@NumericKeyboard)
+            numericKey4.setOnClickListener(this@NumericKeyboard)
+            numericKey5.setOnClickListener(this@NumericKeyboard)
+            numericKey6.setOnClickListener(this@NumericKeyboard)
+            numericKey7.setOnClickListener(this@NumericKeyboard)
+            numericKey8.setOnClickListener(this@NumericKeyboard)
+            numericKey9.setOnClickListener(this@NumericKeyboard)
             numeric_key_backspace.setOnClickListener(this@NumericKeyboard)
         }
         dividerDrawable = context.getDrawable(R.drawable.keyboard_divider)

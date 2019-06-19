@@ -5,51 +5,51 @@
     <TableRow style="@style/KeyboardRow">
         <TextView
                 style="@style/KeyboardButton"
-                android:id="@+id/numeric_key_7"
+                android:id="@+id/numericKey7"
                 android:text="7" />
 
         <TextView
                 style="@style/KeyboardButton"
-                android:id="@+id/numeric_key_8"
+                android:id="@+id/numericKey8"
                 android:text="8" />
 
         <TextView
                 style="@style/KeyboardButton"
-                android:id="@+id/numeric_key_9"
+                android:id="@+id/numericKey9"
                 android:text="9" />
     </TableRow>
 
     <TableRow style="@style/KeyboardRow">
         <TextView
                 style="@style/KeyboardButton"
-                android:id="@+id/numeric_key_4"
+                android:id="@+id/numericKey4"
                 android:text="4" />
 
         <TextView
                 style="@style/KeyboardButton"
-                android:id="@+id/numeric_key_5"
+                android:id="@+id/numericKey5"
                 android:text="5" />
 
         <TextView
                 style="@style/KeyboardButton"
-                android:id="@+id/numeric_key_6"
+                android:id="@+id/numericKey6"
                 android:text="6" />
     </TableRow>
 
     <TableRow style="@style/KeyboardRow">
         <TextView
                 style="@style/KeyboardButton"
-                android:id="@+id/numeric_key_1"
+                android:id="@+id/numericKey1"
                 android:text="1" />
 
         <TextView
                 style="@style/KeyboardButton"
-                android:id="@+id/numeric_key_2"
+                android:id="@+id/numericKey2"
                 android:text="2" />
 
         <TextView
                 style="@style/KeyboardButton"
-                android:id="@+id/numeric_key_3"
+                android:id="@+id/numericKey3"
                 android:text="3" />
     </TableRow>
 
@@ -58,7 +58,7 @@
 
         <TextView
                 style="@style/KeyboardButton"
-                android:id="@+id/numeric_key_0"
+                android:id="@+id/numericKey0"
                 android:text="0" />
 
         <ImageView
