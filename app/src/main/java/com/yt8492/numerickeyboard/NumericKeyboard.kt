@@ -8,10 +8,8 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.widget.LinearLayout
 import android.widget.TableLayout
-import android.widget.TableRow
 import android.widget.TextView
 import androidx.core.content.res.getResourceIdOrThrow
-import androidx.core.view.children
 import kotlinx.android.synthetic.main.numeric_keyboard.view.*
 
 class NumericKeyboard @JvmOverloads constructor(
@@ -51,24 +49,20 @@ class NumericKeyboard @JvmOverloads constructor(
         }
         dividerDrawable = context.getDrawable(R.drawable.keyboard_divider)
         showDividers = SHOW_DIVIDER_BEGINNING or LinearLayout.SHOW_DIVIDER_MIDDLE
-        children.filterIsInstance<TableRow>()
-            .forEach { it.dividerDrawable = dividerDrawable }
     }
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         val targetField: TextView = (parent as View).findViewById(targetFieldId)
         targetField.isFocusable = false
+
         inputConnection = targetField.onCreateInputConnection(EditorInfo())
     }
 
     override fun onClick(v: View?) {
         v ?: return
         if (v.id == R.id.numeric_key_backspace) {
-            val selectedText: CharSequence? = inputConnection.getSelectedText(0)
-            if (selectedText.isNullOrEmpty()) {
-                inputConnection.deleteSurroundingText(1, 0)
-            }
+            inputConnection.deleteSurroundingText(1, 0)
         } else {
             val value = keyValues[v.id]
             inputConnection.commitText(value, 1)
