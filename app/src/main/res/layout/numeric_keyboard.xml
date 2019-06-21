@@ -54,7 +54,9 @@
     </TableRow>
 
     <TableRow style="@style/KeyboardRow">
-        <TextView style="@style/KeyboardButton" />
+        <TextView
+                style="@style/KeyboardButton"
+                android:clickable="false" />
 
         <TextView
                 style="@style/KeyboardButton"
