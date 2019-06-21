@@ -2,7 +2,6 @@ package com.yt8492.numerickeyboard
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.SparseArray
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
@@ -16,18 +15,18 @@ class NumericKeyboard @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
 ) : TableLayout(context, attrs), View.OnClickListener {
-    private val keyValues = SparseArray<String>().apply {
-        put(R.id.numericKey0, "0")
-        put(R.id.numericKey1, "1")
-        put(R.id.numericKey2, "2")
-        put(R.id.numericKey3, "3")
-        put(R.id.numericKey4, "4")
-        put(R.id.numericKey5, "5")
-        put(R.id.numericKey6, "6")
-        put(R.id.numericKey7, "7")
-        put(R.id.numericKey8, "8")
-        put(R.id.numericKey9, "9")
-    }
+    private val keyValues = mapOf(
+        R.id.numericKey0 to "0",
+        R.id.numericKey1 to "1",
+        R.id.numericKey2 to "2",
+        R.id.numericKey3 to "3",
+        R.id.numericKey4 to "4",
+        R.id.numericKey5 to "5",
+        R.id.numericKey6 to "6",
+        R.id.numericKey7 to "7",
+        R.id.numericKey8 to "8",
+        R.id.numericKey9 to "9"
+    )
     private val targetFieldId: Int
     private lateinit var inputConnection: InputConnection
     init {
@@ -55,7 +54,6 @@ class NumericKeyboard @JvmOverloads constructor(
         super.onAttachedToWindow()
         val targetField: TextView = (parent as View).findViewById(targetFieldId)
         targetField.isFocusable = false
-
         inputConnection = targetField.onCreateInputConnection(EditorInfo())
     }
 
@@ -63,8 +61,8 @@ class NumericKeyboard @JvmOverloads constructor(
         v ?: return
         if (v.id == R.id.numeric_key_backspace) {
             inputConnection.deleteSurroundingText(1, 0)
-        } else {
-            val value = keyValues[v.id]
+        } else if (v.id in keyValues.keys) {
+            val value = keyValues[v.id] ?: return
             inputConnection.commitText(value, 1)
         }
     }
