@@ -9,7 +9,6 @@ import android.widget.LinearLayout
 import android.widget.TableLayout
 import android.widget.TextView
 import androidx.core.content.res.getResourceIdOrThrow
-import kotlinx.android.synthetic.main.numeric_keyboard.view.*
 
 class NumericKeyboard @JvmOverloads constructor(
     context: Context,
@@ -34,20 +33,13 @@ class NumericKeyboard @JvmOverloads constructor(
             targetFieldId = typedArray.getResourceIdOrThrow(R.styleable.NumericKeyboard_targetField)
         }.recycle()
         View.inflate(context, R.layout.numeric_keyboard, this).apply {
-            numericKey0.setOnClickListener(this@NumericKeyboard)
-            numericKey1.setOnClickListener(this@NumericKeyboard)
-            numericKey2.setOnClickListener(this@NumericKeyboard)
-            numericKey3.setOnClickListener(this@NumericKeyboard)
-            numericKey4.setOnClickListener(this@NumericKeyboard)
-            numericKey5.setOnClickListener(this@NumericKeyboard)
-            numericKey6.setOnClickListener(this@NumericKeyboard)
-            numericKey7.setOnClickListener(this@NumericKeyboard)
-            numericKey8.setOnClickListener(this@NumericKeyboard)
-            numericKey9.setOnClickListener(this@NumericKeyboard)
-            numeric_key_backspace.setOnClickListener(this@NumericKeyboard)
+            keyValues.keys.forEach { id ->
+                findViewById<View>(id).setOnClickListener(this@NumericKeyboard)
+            }
+            findViewById<View>(R.id.numeric_key_backspace).setOnClickListener(this@NumericKeyboard)
         }
         dividerDrawable = context.getDrawable(R.drawable.keyboard_divider)
-        showDividers = SHOW_DIVIDER_BEGINNING or LinearLayout.SHOW_DIVIDER_MIDDLE
+        showDividers = LinearLayout.SHOW_DIVIDER_BEGINNING or LinearLayout.SHOW_DIVIDER_MIDDLE
     }
 
     override fun onAttachedToWindow() {
@@ -58,11 +50,11 @@ class NumericKeyboard @JvmOverloads constructor(
     }
 
     override fun onClick(v: View?) {
-        v ?: return
-        if (v.id == R.id.numeric_key_backspace) {
+        val view = v ?: return
+        if (view.id == R.id.numeric_key_backspace) {
             inputConnection.deleteSurroundingText(1, 0)
-        } else if (v.id in keyValues.keys) {
-            val value = keyValues[v.id] ?: return
+        } else if (view.id in keyValues.keys) {
+            val value = keyValues[view.id] ?: return
             inputConnection.commitText(value, 1)
         }
     }
